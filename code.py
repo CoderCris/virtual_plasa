@@ -5,6 +5,11 @@ from adafruit_display_text import label
 import terminalio
 import keypad
 
+try:    
+    from cardputer_repl import input
+except:
+    print("No REPL found")
+    pass
 
 display = board.DISPLAY
 group = displayio.Group()
@@ -30,7 +35,7 @@ info = label.Label(font,
 group.append(text)
 group.append(info)
 display.root_group = group
-
+'''
 buttons = keypad.ShiftRegisterKeys(
     clock=board.BUTTON_CLOCK,
     data=board.BUTTON_OUT,
@@ -38,9 +43,10 @@ buttons = keypad.ShiftRegisterKeys(
     key_count=8,
     value_when_pressed=True,
 )
-
+'''
 
 while True:
+    '''
     button_events = buttons.events.get()
     if button_events:
         if button_events.pressed:
@@ -64,5 +70,5 @@ while True:
                 text.x = text.x = - 10
                 text_coords = (text.x, text.y)
                 info.text = str(text_coords)
-
+'''
     pass
